@@ -1276,6 +1276,15 @@ section {
 .method-content p {
     font-size: 0.9375rem;
     color: var(--text-secondary);
+    word-break: break-word;
+    overflow-wrap: break-word;
+    word-wrap: break-word;
+}
+
+@media (max-width: 480px) {
+    .method-content p {
+        font-size: 0.8rem;
+    }
 }
 
 .contact-method i.fa-arrow-right {
