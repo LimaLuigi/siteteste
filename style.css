@@ -532,6 +532,46 @@ button {
     align-items: center;
 }
 
+.policy-disclaimer {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    gap: 0.5rem;
+    color: var(--text-tertiary);
+    font-size: 0.875rem;
+    margin-top: var(--space-md);
+    margin-bottom: var(--space-2xl);
+    opacity: 0.85;
+    text-align: center;
+}
+
+.policy-disclaimer i {
+    color: var(--primary-500);
+    font-size: 1rem;
+}
+
+.policy-disclaimer a {
+    color: var(--primary-500);
+    text-decoration: none;
+    font-weight: 600;
+    border-bottom: 1px solid transparent;
+    transition: all var(--transition-fast);
+}
+
+.policy-disclaimer a:hover {
+    border-bottom-color: var(--primary-500);
+    color: var(--primary-600);
+}
+
+@media (max-width: 768px) {
+    .policy-disclaimer {
+        font-size: 0.75rem;
+        flex-direction: column;
+        gap: 0.25rem;
+        margin-top: var(--space-sm);
+    }
+}
+
 .btn {
     display: inline-flex;
     align-items: center;
@@ -1490,6 +1530,26 @@ section {
     color: var(--error);
 }
 
+.footer-bottom .policy-disclaimer-line {
+    margin-top: var(--space-lg);
+    padding-top: var(--space-md);
+    border-top: 1px solid rgba(255, 255, 255, 0.1);
+}
+
+.footer-bottom .policy-disclaimer-line p {
+    margin: 0;
+    font-size: 0.75rem;
+    line-height: 1.5;
+    color: rgba(255, 255, 255, 0.6);
+    text-align: center;
+}
+
+@media (max-width: 768px) {
+    .footer-bottom .policy-disclaimer-line p {
+        font-size: 0.7rem;
+    }
+}
+
 /* ============================================
    RESPONSIVE DESIGN
    ============================================ */
@@ -1775,26 +1835,36 @@ section {
 }
 
 /* ============================================
-   POLÍTICA DE CANCELAMENTO - DISCLAIMER FOOTER
+   POLÍTICA DE CANCELAMENTO - SEÇÃO
    ============================================ */
 
+.policy-section {
+    background: var(--bg-tertiary);
+    padding: 1.5rem 0;
+}
+
 .policy-disclaimer-line {
-    padding: 1.25rem 0 1rem;
-    margin-top: 2rem;
-    border-top: 1px solid rgba(255, 255, 255, 0.15);
+    text-align: center;
 }
 
 .policy-disclaimer-line p {
     margin: 0;
-    font-size: 11px;
-    line-height: 1.7;
-    color: rgba(255, 255, 255, 0.65);
-    text-align: center;
-    font-weight: 300;
+    font-size: 0.875rem;
+    line-height: 1.6;
+    color: var(--text-secondary);
+    font-weight: 400;
 }
 
 @media (max-width: 768px) {
-    .policy-disclaimer-line {
+    .policy-section {
+        padding: 1.25rem 0;
+    }
+    
+    .policy-disclaimer-line p {
+        font-size: 0.8rem;
+        line-height: 1.5;
+    }
+}
         padding: 1rem 0 0.75rem;
     }
     
