@@ -203,8 +203,15 @@ button {
     z-index: 10001;
     background: rgba(255, 255, 255, 0.9);
     border-bottom: 1px solid rgba(255, 255, 255, 0.2);
-    transition: background var(--transition-base);
-    will-change: background;
+    transition: background var(--transition-base), transform 0.3s ease;
+    will-change: background, transform;
+}
+
+/* Hide navbar on scroll down (mobile only) */
+@media (max-width: 768px) {
+    .navbar.nav-hidden {
+        transform: translateY(-100%);
+    }
 }
 
 .navbar.scrolled {
@@ -1037,13 +1044,6 @@ section {
    SERVICES SECTION
    ============================================ */
 
-.products-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: var(--space-xl);
-    margin-bottom: var(--space-4xl);
-}
-
 .services-grid {
     display: grid;
     grid-template-columns: repeat(auto-fit, minmax(300px, 1fr));
@@ -1092,18 +1092,18 @@ section {
 
 /* Confira Também Section */
 .confira-section {
-    margin-top: var(--space-4xl);
-    padding-top: var(--space-4xl);
+    margin-top: var(--space-3xl);
+    padding-top: var(--space-3xl);
     border-top: 2px solid var(--neutral-200);
 }
 
 .confira-header {
     text-align: center;
-    margin-bottom: var(--space-2xl);
+    margin-bottom: var(--space-xl);
 }
 
 .confira-header h3 {
-    font-size: 1.5rem;
+    font-size: 1.25rem;
     color: var(--primary-500);
     font-weight: 600;
     letter-spacing: 0.5px;
@@ -1111,11 +1111,44 @@ section {
     font-family: var(--font-secondary);
 }
 
+.products-grid {
+    display: flex;
+    justify-content: center;
+    gap: var(--space-xl);
+    margin-bottom: var(--space-2xl);
+}
+
+.products-grid .product-card {
+    max-width: 400px;
+    width: 100%;
+}
+
 /* Product Card Special Styles */
 .product-card {
     border: 2px solid var(--neutral-300);
     background: var(--bg-primary);
     box-shadow: var(--shadow-lg);
+    padding: var(--space-lg);
+}
+
+.product-card h3 {
+    font-size: 1.1rem;
+    margin-bottom: var(--space-xs);
+}
+
+.product-card > p {
+    font-size: 0.9rem;
+    line-height: 1.5;
+    margin-bottom: var(--space-sm);
+}
+
+.product-card .service-features {
+    margin-bottom: var(--space-sm);
+    gap: var(--space-xs);
+}
+
+.product-card .service-features li {
+    font-size: 0.85rem;
 }
 
 .product-card:hover {
@@ -1137,17 +1170,17 @@ section {
 }
 
 .product-subtitle {
-    font-size: 0.875rem;
+    font-size: 0.8rem;
     font-weight: 600;
     color: var(--brand-primary);
     text-transform: uppercase;
     letter-spacing: 0.05em;
-    margin-bottom: var(--space-md);
+    margin-bottom: var(--space-xs);
 }
 
 .product-image-wrapper {
     width: 100%;
-    margin-bottom: var(--space-lg);
+    margin-bottom: var(--space-sm);
     border-radius: var(--radius-xl);
     overflow: hidden;
     box-shadow: 0 8px 25px rgba(0, 0, 0, 0.15);
@@ -1178,22 +1211,22 @@ section {
     align-items: baseline;
     justify-content: center;
     gap: var(--space-xs);
-    margin: var(--space-xl) 0 var(--space-lg);
-    padding: var(--space-lg);
+    margin: var(--space-sm) 0 var(--space-sm);
+    padding: var(--space-sm) var(--space-md);
     background: var(--bg-primary);
     border-radius: var(--radius-lg);
     border: 2px dashed var(--brand-primary);
 }
 
 .price-currency {
-    font-size: 1.25rem;
+    font-size: 0.9rem;
     font-weight: 600;
     color: var(--brand-dark);
 }
 
 .price-amount {
     font-family: var(--font-secondary);
-    font-size: 2.5rem;
+    font-size: 1.75rem;
     font-weight: 800;
     background: var(--gradient-primary);
     -webkit-background-clip: text;
@@ -1205,8 +1238,8 @@ section {
 .btn-product {
     width: 100%;
     justify-content: center;
-    font-size: 1.125rem;
-    padding: var(--space-lg) var(--space-2xl);
+    font-size: 0.95rem;
+    padding: var(--space-sm) var(--space-md);
     box-shadow: 0 8px 25px rgba(0, 137, 177, 0.3);
 }
 
@@ -1432,7 +1465,26 @@ section {
     box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
+/* Política de Cancelamento */
+.policy-section {
+    background: #f5f5f5;
+    padding: var(--space-xl) 0;
+    text-align: center;
+}
 
+.policy-section p {
+    max-width: 900px;
+    margin: 0 auto;
+    color: var(--text-secondary);
+    font-size: 0.95rem;
+    line-height: 1.6;
+}
+
+@media (max-width: 768px) {
+    .policy-section p {
+        font-size: 0.9rem;
+    }
+}
 
 .footer {
     background: var(--bg-dark);
@@ -1505,6 +1557,29 @@ section {
     color: var(--neutral-400);
     line-height: 1.7;
     margin-bottom: var(--space-lg);
+}
+
+.footer-instagram {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: 48px;
+    height: 48px;
+    background-color: var(--brand-dark);
+    border: 1px solid rgba(255, 255, 255, 0.2);
+    border-radius: var(--radius-lg);
+    color: var(--text-light);
+    font-size: 1.5rem;
+    margin-top: var(--space-sm);
+    transition: all 0.3s ease;
+}
+
+.footer-instagram:hover {
+    background-color: #ffffff;
+    color: var(--brand-dark);
+    border-color: #ffffff;
+    transform: translateY(-2px);
+    box-shadow: 0 4px 12px rgba(255, 255, 255, 0.2);
 }
 
 .footer-col h4 {
@@ -1628,7 +1703,11 @@ section {
     }
 
     .products-grid {
-        grid-template-columns: 1fr;
+        max-width: 100%;
+    }
+
+    .products-grid .product-card {
+        max-width: 100%;
     }
 
     .contact-form-wrapper {
