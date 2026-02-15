@@ -102,7 +102,7 @@
                     <i class="fas fa-info-circle"></i>
                     <p>
                         Ao agendar, você declara estar ciente de nossas
-                        <button class="policy-link" onclick="openPolicyModal()">políticas de cancelamento</button>
+                        <a href="#politica" class="policy-link">políticas de cancelamento</a>
                         (CDC Art. 46)
                     </p>
                 </div>
@@ -264,10 +264,10 @@
                             <span class="price-currency">R$</span>
                             <span class="price-amount">29,90</span>
                         </div>
-                        <button class="btn btn-primary btn-product">
+                        <a href="https://wa.me/5519996715525?text=Olá!%20Gostaria%20de%20comprar%20o%20Guia%20Prático%20da%20HIPERTROFIA%20por%20R$%2029,90" target="_blank" rel="noopener noreferrer" class="btn btn-primary btn-product">
                             <i class="fab fa-whatsapp"></i>
                             Comprar Agora
-                        </button>
+                        </a>
                     </div>
                 </div>
             </div>
@@ -535,7 +535,12 @@
         </div>
     </section>
 
-
+    <!-- Política de Cancelamento -->
+    <section id="politica" class="policy-section">
+        <div class="container">
+            <p>Remarcações com mais de 24 horas são gratuitas. Cancelamentos com menos de 3 dias têm taxa de 50%. Cancelamentos com menos de 24 horas ou atrasos acima de 30 minutos têm cobrança integral. Ao agendar, você declara estar ciente destas políticas (CDC Art. 46).</p>
+        </div>
+    </section>
 
     <!-- Footer -->
     <footer class="footer">
@@ -552,6 +557,9 @@
                         </div>
                     </a>
                     <p>Transformando vidas através da alimentação consciente e equilibrada.</p>
+                    <a href="https://instagram.com/nutrifurlan" target="_blank" rel="noopener noreferrer" class="footer-instagram">
+                        <i class="fab fa-instagram"></i>
+                    </a>
                 </div>
                 <div class="footer-col">
                     <h4>LINKS RÁPIDOS</h4>
@@ -575,6 +583,7 @@
                     <h4>CONTATO</h4>
                     <ul class="footer-contact">
                         <li><i class="fab fa-whatsapp"></i> <a href="https://tinyurl.com/consulta-ian" target="_blank" rel="noopener noreferrer">+55 19 99671-5525</a></li>
+                        <li><i class="fab fa-instagram"></i> <a href="https://instagram.com/nutrifurlan" target="_blank" rel="noopener noreferrer">@nutrifurlan</a></li>
                         <li><i class="fas fa-envelope"></i> <a href="mailto:nutrifurlan.contato@gmail.com">nutrifurlan.contato@gmail.com</a></li>
                         <li><i class="fas fa-certificate"></i> CRN: 83056</li>
                     </ul>
@@ -719,6 +728,17 @@
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+            }
+
+            // Hide/show navbar on mobile scroll
+            if (window.innerWidth <= 768) {
+                if (currentScroll > lastScroll && currentScroll > 80) {
+                    // Scrolling down - hide navbar
+                    navbar.classList.add('nav-hidden');
+                } else {
+                    // Scrolling up - show navbar
+                    navbar.classList.remove('nav-hidden');
+                }
             }
 
             lastScroll = currentScroll;
