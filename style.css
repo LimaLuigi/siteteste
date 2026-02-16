@@ -214,6 +214,13 @@ button {
     }
 }
 
+/* Hide navbar when Calendly modal is open on mobile */
+.navbar.calendly-open {
+    display: none !important;
+    visibility: hidden !important;
+    opacity: 0 !important;
+}
+
 .navbar.scrolled {
     background: rgba(255, 255, 255, 0.95);
     box-shadow: var(--shadow-md);
@@ -1645,6 +1652,16 @@ section {
     margin-bottom: var(--space-sm);
 }
 
+.copyright {
+    margin: 0;
+}
+
+.copyright p {
+    margin: 0;
+    font-size: 0.875rem;
+    color: var(--neutral-400);
+}
+
 .footer-credit {
     font-size: 0.875rem;
 }
@@ -2327,17 +2344,9 @@ section {
         line-height: 1.5;
     }
 }
-        padding: 1rem 0 0.75rem;
-    }
-    
-    .policy-disclaimer-line p {
-        font-size: 10px;
-        line-height: 1.6;
-    }
-}
 
 /* ============================================
-/* POL�TICA DE CANCELAMENTO - DESTAQUE */
+/* POLÍTICA DE CANCELAMENTO - DESTAQUE */
 
 .policy-disclaimer-section {
     background: linear-gradient(135deg, #006b8a, #0089B1);
@@ -2867,25 +2876,6 @@ body.calendly-popup-active {
         touch-action: manipulation !important;
         pointer-events: auto !important;
         position: relative !important;
-    }
-    
-    /* Botão de fechar */
-    .calendly-popup-close,
-    .calendly-close-overlay {
-        top: 5vh !important;
-        right: 2.5% !important;
-        z-index: 99999 !important;
-        width: 44px !important;
-        height: 44px !important;
-        background: rgba(0, 0, 0, 0.8) !important;
-        border-radius: 50% !important;
-        display: flex !important;
-        align-items: center !important;
-        justify-content: center !important;
-        position: fixed !important;
-        transform: none !important;
-        -webkit-transform: none !important;
-        touch-action: manipulation !important;
     }
     
     /* Garantir que os cliques funcionem corretamente */
