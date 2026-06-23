@@ -661,20 +661,48 @@
         });
 
         // Navbar Scroll Effect
-        let lastScroll = 0;
         const navbar = document.querySelector('.navbar');
+        const scrollThreshold = 100;
+        const scrollTolerance = 8;
+        let lastScroll = window.pageYOffset;
+        let ticking = false;
 
-        window.addEventListener('scroll', () => {
-            const currentScroll = window.pageYOffset;
-            
-            if (currentScroll > 100) {
+        function updateNavbarOnScroll() {
+            const currentScroll = Math.max(window.pageYOffset, 0);
+            const scrollDifference = currentScroll - lastScroll;
+            const menuIsOpen = document.body.classList.contains('menu-open');
+
+            if (currentScroll > scrollThreshold) {
                 navbar.classList.add('scrolled');
             } else {
                 navbar.classList.remove('scrolled');
+                navbar.classList.remove('navbar-hidden');
             }
 
-            lastScroll = currentScroll;
-        });
+            if (!menuIsOpen && currentScroll > scrollThreshold && Math.abs(scrollDifference) > scrollTolerance) {
+                if (scrollDifference > 0) {
+                    navbar.classList.add('navbar-hidden');
+                } else {
+                    navbar.classList.remove('navbar-hidden');
+                }
+
+                lastScroll = currentScroll;
+            } else if (menuIsOpen) {
+                navbar.classList.remove('navbar-hidden');
+                lastScroll = currentScroll;
+            } else if (currentScroll <= scrollThreshold) {
+                lastScroll = currentScroll;
+            }
+
+            ticking = false;
+        }
+
+        window.addEventListener('scroll', () => {
+            if (!ticking) {
+                window.requestAnimationFrame(updateNavbarOnScroll);
+                ticking = true;
+            }
+        }, { passive: true });
 
         // FAQ Accordion
         const faqItems = document.querySelectorAll('.faq-item');
